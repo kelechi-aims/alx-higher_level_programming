@@ -44,7 +44,7 @@ Numbers
 
 'Test with large positive float and large negative float'
 >>> add_integer(9876543.21, -1234567.89)
-8641975
+8641976
 
 ' Test with large negative float and large positive integer'
 >>> add_integer(-9876543.21, 9876543)
