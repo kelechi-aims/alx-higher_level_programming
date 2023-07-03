@@ -1,0 +1,97 @@
+The ''0-add_integer'' module
+============================
+
+Using ''add_integer''
+---------------------
+
+Import function from the module:
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+Numbers
+=======
+
+'Test with positive integers'
+>>> add_integer(2, 7)
+9
+
+'Test with negative integers'
+>>> add_integer(-1, -2)
+-3
+
+'Test with zero as one of the integers'
+>>> add_integer(0, 10)
+10
+
+'Test with zero as both integers'
+>>> add_integer(0, 0)
+0
+
+'Test with positive and negative integers'
+>>> add_integer(100, -2)
+98
+
+'Test with one argument'
+>>> add_integer(2)
+100
+
+'Test with float values'
+>>> add_integer(100.3, -2.9)
+98
+
+'Test with large integers'
+>>> add_integer(1000000, 2000000)
+3000000
+
+'Test with large positive float and large negative float'
+>>> add_integer(9876543.21, -1234567.89)
+8641975
+
+' Test with large negative float and large positive integer'
+>>> add_integer(-9876543.21, 9876543)
+0
+
+Non-Numbers
+===========
+
+'Test with no argument'
+>>> add_integer()
+Traceback (most recent call last):
+  ...
+TypeError: add_integer() missing 1 required positional argument: 'a'
+
+'Test with one argument as string'
+>>> add_integer(4, "School")
+Traceback (most recent call last):
+  ...
+TypeError: b must be an integer
+
+'Adding with None'
+>>> add_integer(None)
+Traceback (most recent call last):
+  ...
+TypeError: a must be an integer
+
+'Test with boolean value for a'
+>>> add_integer(True, 10)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+
+'Test with boolean value for b'
+>>> add_integer(10, False)
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+
+'Test with positive infinity as a value'
+>>> add_integer(float('inf'))
+Traceback (most recent call last):
+  ...
+OverflowError: cannot convert float infinity to integer
+
+'Test with NaN (Not a Number) as a value'
+>>> add_integer(float('nan'))
+Traceback (most recent call last):
+  ...
+ValueError: cannot convert float NaN to integer
+
