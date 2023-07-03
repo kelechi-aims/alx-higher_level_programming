@@ -120,7 +120,8 @@ class Rectangle:
             str: The representation of the rectangle object.
         '''
         return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
-    def  __del__(self):
+
+    def __del__(self):
         '''
         Prints a message when an instance of Rectangle is deleted.
         '''
