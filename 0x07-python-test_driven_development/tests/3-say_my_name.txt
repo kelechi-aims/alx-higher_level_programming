@@ -1,0 +1,42 @@
+The ''3-say_my_name'' module
+============================
+
+Using ''say_my_name''
+---------------------
+
+Import function from the module:
+
+	>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+'Testing with first_name and last_name arguments'
+>>> say_my_name("John", "Smith")
+My name is John Smith
+
+'Testing with just one argument'
+>>> say_my_name("Bob")
+My name is Bob
+
+'Testing with first_name as integer'
+>>> say_my_name(12, "White")
+Traceback (most recent call last):
+  ...
+TypeError: first_name must be a string
+
+'Testing with last name as float'
+>>> say_my_name("White", 5.63)
+Traceback (most recent call last):
+  ...
+TypeError: last_name must be a string
+
+'Testing with one argument as None'
+>>> say_my_name("White", None)
+Traceback (most recent call last):
+  ...
+TypeError: last_name must be a string
+
+'Testing with no argument'
+>>> say_my_name()
+Traceback (most recent call last):
+  ...
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
