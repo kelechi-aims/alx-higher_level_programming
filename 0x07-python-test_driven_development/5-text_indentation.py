@@ -35,4 +35,4 @@ def text_indentation(text):
     if line:
         lines.append(line.strip())
 
-    print("\n\n".join(lines))
+    print("\n\n".join(lines), end="")
