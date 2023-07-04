@@ -91,13 +91,13 @@ def print_solutions(solutions):
 
 if __name__ == "__main__":
     # Parse the command-line argument
-    if len(sys.argv) != 2 or not sys.argv[1].isdigit():
+    if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
 
     try:
         N = int(sys.argv[1])
-    except ValueError:
+    except:
         print("N must be an integer")
         sys.exit(1)
     if N < 4:
