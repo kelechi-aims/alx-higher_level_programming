@@ -91,7 +91,7 @@ def print_solutions(solutions):
 
 if __name__ == "__main__":
     # Parse the command-line argument
-    if len(sys.argv) != 2:
+    if len(sys.argv) != 2 or not sys.argv[1].isdigit():
         print("Usage: nqueens N")
         sys.exit(1)
 
