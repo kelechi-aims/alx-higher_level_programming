@@ -97,7 +97,7 @@ if __name__ == "__main__":
 
     try:
         N = int(sys.argv[1])
-    except:
+    except ValueError:
         print("N must be an integer")
         sys.exit(1)
     if N < 4:
