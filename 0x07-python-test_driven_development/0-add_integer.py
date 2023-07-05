@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 '''
    This contains a function that adds 2 integers.
    Return their sum.
