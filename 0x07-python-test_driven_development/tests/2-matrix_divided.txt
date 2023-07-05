@@ -71,4 +71,4 @@ TypeError: div must be a number
 >>> matrix_divided([["1", "2", 6], [3, 4, "5"]], 2)
 Traceback (most recent call last):
   ...
-TypeError: unsupported operand type(s) for /: 'str' and 'int'
+TypeError: matrix must contain only integers or floats

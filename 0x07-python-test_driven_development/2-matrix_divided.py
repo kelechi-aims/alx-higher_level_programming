@@ -39,5 +39,7 @@ def matrix_divided(matrix, div):
         raise TypeError("div must be a number")
     if div == 0:
         raise ZeroDivisionError("division by zero")
+    if not all(isinstance(i, (int, float)) for row in matrix for i in row):
+        raise TypeError("matrix must contain only integers or floats")
     m = list(map(lambda x: list(map(lambda y: round(y / div, 2), x)), matrix))
     return m
