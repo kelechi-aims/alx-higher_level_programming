@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 '''
    This contains a function that divides all elements of a matrix.
    Returns a new matrix.
