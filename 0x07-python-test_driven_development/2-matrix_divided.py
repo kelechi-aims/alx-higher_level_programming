@@ -40,6 +40,8 @@ def matrix_divided(matrix, div):
     if div == 0:
         raise ZeroDivisionError("division by zero")
     if not all(isinstance(i, (int, float)) for row in matrix for i in row):
-        raise TypeError("matrix must contain only integers or floats")
+        raise TypeError(
+            "matrix must be a matrix (array of arrays of integers/floats)"
+            )
     m = list(map(lambda x: list(map(lambda y: round(y / div, 2), x)), matrix))
     return m
