@@ -14,7 +14,7 @@ My name is John Smith
 
 'Testing with just one argument'
 >>> say_my_name("Bob")
-My name is Bob
+My name is Bob 
 
 'Testing with first_name as integer'
 >>> say_my_name(12, "White")
