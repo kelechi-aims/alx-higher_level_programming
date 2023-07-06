@@ -39,7 +39,7 @@ def matrix_mul(m_a, m_b):
     if len(m_a) == 0 or (len(m_a) == 1 and len(m_a[0]) == 0):
         raise ValueError("m_a can't be empty")
     if len(m_b) == 0 or (len(m_b) == 1 and len(m_b[0]) == 0):
-        raise ValueError("m_a can't be empty")
+        raise ValueError("m_b can't be empty")
     for row in m_a:
         for element in row:
             if not isinstance(element, (int, float)):
