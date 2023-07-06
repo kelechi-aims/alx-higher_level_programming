@@ -23,7 +23,5 @@ def lazy_matrix_mul(m_a, m_b):
         ValueError: If m_a or m_b is empty ([] or [[]]),
                     or if the matrices cannot be multiplied.
     '''
-    a = np.array(m_a)
-    b = np.array(m_b)
-    result = np.dot(a, b).tolist()
+    result = np.matmul(m_a, m_b)
     return result
