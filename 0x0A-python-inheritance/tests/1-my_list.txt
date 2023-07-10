@@ -86,8 +86,8 @@ Empty list test:
 
 Normal list test:
 >>> ml = MyList([2, 10, 1])
->>> ml.print_sorted()
-[1, 2, 10]
+>>> print(ml)
+[2, 10, 1]
 
 Normal list test 2:
 >>> ml = MyList([1, 4, 2, 3, 5])
