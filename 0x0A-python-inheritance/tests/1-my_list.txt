@@ -42,6 +42,10 @@ Printing an empty list
 >>> my_list.print_sorted()
 []
 
+Printing an empty list
+>>> my_list = MyList()
+>>> print(my_list)
+[]
 
 Correct Class Type test:
 >>> ml = MyList()
