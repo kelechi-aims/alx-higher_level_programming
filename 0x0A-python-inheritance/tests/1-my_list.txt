@@ -99,7 +99,7 @@ Original list unchanged:
 >>> ml = MyList([2, 10, 1, -10, 20, 100, 0])
 >>> ml.print_sorted()
 [-10, 0, 1, 2, 10, 20, 100]
->>> ml
+>>> print(ml)
 [2, 10, 1, -10, 20, 100, 0]
 
 List already in order:
@@ -110,5 +110,15 @@ List already in order:
 Test append:
 >>> ml = MyList()
 >>> ml.append(10)
->>> ml
+>>> print(ml)
 [10]
+
+Check if print_sorted() returns a new list
+>>> my_list = MyList()
+>>> my_list.append(7)
+>>> my_list.append(1)
+>>> my_list.append(2)
+>>> my_list.print_sorted()
+[1, 2, 7]
+>>> my_list
+[7, 1, 2]
