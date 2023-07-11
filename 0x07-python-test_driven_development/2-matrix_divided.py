@@ -41,7 +41,7 @@ def matrix_divided(matrix, div):
         raise ZeroDivisionError("division by zero")
     if not all(isinstance(i, (int, float)) for row in matrix for i in row):
         raise TypeError(
-            "matrix must be a matrix (array of arrays of integers/floats)"
+            "matrix must be a matrix (list of lists) of integers/floats"
             )
     m = list(map(lambda x: list(map(lambda y: round(y / div, 2), x)), matrix))
     return m
