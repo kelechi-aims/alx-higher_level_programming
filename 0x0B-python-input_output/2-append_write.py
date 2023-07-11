@@ -1,4 +1,4 @@
-#!/usr/bin/pythons
+#!/usr/bin/python3
 '''Has a function that appends a string at the end of the text file
    (UTF8) and returns the number of characters added.
 '''
