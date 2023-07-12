@@ -16,11 +16,11 @@ def append_after(filename="", search_string="", new_string=""):
                           line.
     '''
     lines = []
-    with open(filename, mode='r', encoding='utf-8') as file:
+    with open(filename, mode='r') as file:
         for line in file:
             lines.append(line.rstrip())
             if search_string in line:
                 lines.append(new_string)
 
-    with open(filename, mode='w', encoding='utf-8') as file:
+    with open(filename, mode='w') as file:
         file.write("".join(lines))
