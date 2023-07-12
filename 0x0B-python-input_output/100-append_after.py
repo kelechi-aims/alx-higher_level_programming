@@ -17,9 +17,10 @@ def append_after(filename="", search_string="", new_string=""):
     '''
     lines = []
     with open(filename, mode='r') as file:
-        for line in file:
-            lines.append(line.rstrip())
-            if search_string in line:
+        rread = file.readlines()
+        for line in range(len(rread)):
+            lines.append(rread[line])
+            if search_string in rread[line]:
                 lines.append(new_string)
 
     with open(filename, mode='w') as file:
