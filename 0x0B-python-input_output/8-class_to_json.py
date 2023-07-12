@@ -3,7 +3,6 @@
    data structure (list, dictionary, string, integer and boolean) for
    JSON serialization of an object
 '''
-import json
 
 
 def class_to_json(obj):
@@ -17,6 +16,9 @@ def class_to_json(obj):
         dict: The dictionary description of the object's attribute.
     '''
     json_dict = {}
-    if hasattr(obj, "__dict__"):
-        json_dict = obj.__dict__.copy()
+    for attr in obj.__dict__:
+        if not attr.startswith("__"):
+            value = getattr(obj, attr)
+            if isinstance(value, (list, dict, str, int, bool)):
+                json_dict[attr] = value
     return json_dict
