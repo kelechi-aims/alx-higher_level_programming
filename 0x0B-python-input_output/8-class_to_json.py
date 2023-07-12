@@ -17,9 +17,6 @@ def class_to_json(obj):
         dict: The dictionary description of the object's attribute.
     '''
     json_dict = {}
-    for attr in obj.__dict__:
-        if not attr.startswith("__"):
-            value = getattr(obj, attr)
-            if isinstance(value, (list, dict, str, int, bool)):
-                json_dict[attr] = value
+    if hasattr(obj, "__dict__"):
+        json_dict = obj.__dict__.copy()
     return json_dict
