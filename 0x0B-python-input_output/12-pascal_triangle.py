@@ -20,11 +20,11 @@ def pascal_triangle(n):
     triangle.append([1])
 
     for i in range(1, n):
-        prev = triangle[-1]
-        fture = [1]
-        for i in range(len(prev) - 1):
-            fture.append(prev[i] + prev[i + 1])
-        fture += [1]
-        triangle.append(fture)
+        row = [1]
+        prev_row = triangle[i - 1]
+        for j in range(1, i):
+            row.append(prev_row[j - 1] + prev_row[j])
+        row += [1]
+        triangle.append(row)
 
     return triangle
