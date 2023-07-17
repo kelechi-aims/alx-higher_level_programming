@@ -40,5 +40,77 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.x, 2)
         self.assertEqual(r.y, 3)
 
+    def test_width_type_error(self):
+        '''
+        Test that a TypeError is raised if width is not an integer.
+        '''
+        with self.assertRaises(TypeError) as e:
+            r = Rectangle(10, 5)
+            r.width = "invalid"
+        self.assertEqual(str(e.exception), "width must be an integer")
+
+    def test_width_value_error(self):
+        '''
+        Test that a ValueError is raised if width is <= 0.
+        '''
+        with self.assertRaises(ValueError) as e:
+            r = Rectangle(10, 5)
+            r.width = -10
+        self.assertEqual(str(e.exception), "width must be > 0")
+
+    def test_heiht_type_error(self):
+        '''
+        Test that a TypeError is raised if height is not an integer.
+        '''
+        with self.assertRaises(TypeError) as e:
+            r = Rectangle(10, 5)
+            r.height = "invalid"
+        self.assertEqual(str(e.exception), "height must be an integer")
+
+    def test_height_value_error(self):
+        '''
+        Test that a ValueError is raised if height is <= 0.
+        '''
+        with self.assertRaises(ValueError) as e:
+            r = Rectangle(10, 5)
+            r.height = -5
+        self.assertEqual(str(e.exception), "height must be > 0")
+
+    def test_x_type_error(self):
+        '''
+        Test that a TypeError is raised if x is not an integer.
+        '''
+        with self.assertRaises(TypeError) as e:
+            r = Rectangle(10, 5)
+            r.x = "invalid"
+        self.assertEqual(str(e.exception), "x must be an integer")
+
+    def test_x_value_error(self):
+        '''
+        Test that a ValueError is raised if x is < 0.
+        '''
+        with self.assertRaises(ValueError) as e:
+            r = Rectangle(10, 5)
+            r.x = -2
+        self.assertEqual(str(e.exception), "x must be >= 0")
+
+    def test_y_type_error(self):
+        '''
+        Test that a TypeError is raised if y is not an integer.
+        '''
+        with self.assertRaises(TypeError) as e:
+            r = Rectangle(10, 5)
+            r.y = "invalid"
+        self.assertEqual(str(e.exception), "y must be an integer")
+
+    def test_y_value_error(self):
+        '''
+        Test that a ValueError is raised if y is < 0.
+        '''
+        with self.assertRaises(ValueError) as e:
+            r = Rectangle(10, 5)
+            r.y = -4
+        self.assertEqual(str(e.exception), "y must be >= 0")
+
 if __name__ == "__main__":
     unittest.main()
