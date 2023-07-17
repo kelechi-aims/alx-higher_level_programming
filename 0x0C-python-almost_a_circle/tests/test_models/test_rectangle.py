@@ -143,6 +143,18 @@ class TestRectangle(unittest.TestCase):
             r2.display()
             self.assertEqual(buffer.getvalue(), expected_output)
 
+        r3 = Rectangle(2, 3, 2, 2)
+        expected_output = "\n\n  ##\n  ##\n  ##\n"
+        with patch("sys.stdout", new=StringIO()) as buffer:
+            r3.display()
+            self.assertEqual(buffer.getvalue(), expected_output)
+
+        r4 = Rectangle(3, 2, 1, 0)
+        expected_output = " ###\n ###\n"
+        with patch("sys.stdout", new=StringIO()) as buffer:
+            r4.display()
+            self.assertEqual(buffer.getvalue(), expected_output)
+
     def test_str(self):
         '''
         Test the __str__ method of the Rectangle class.
@@ -152,7 +164,6 @@ class TestRectangle(unittest.TestCase):
 
         r2 = Rectangle(5, 5, 1)
         self.assertEqual(str(r2), "[Rectangle] (1) 1/0 - 5/5")
-
 
 if __name__ == "__main__":
     unittest.main()
