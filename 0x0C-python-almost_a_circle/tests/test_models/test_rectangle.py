@@ -2,6 +2,8 @@
 '''This module has the test cases for Rectangle class'''
 import unittest
 from models.rectangle import Rectangle
+from io import StringIO
+from unittest.mock import patch
 
 
 class TestRectangle(unittest.TestCase):
@@ -124,6 +126,22 @@ class TestRectangle(unittest.TestCase):
 
         r3 = Rectangle(8, 7, 0 , 0, 12 )
         self.assertEqual(r3.area(), 56)
+
+    def test_display(self):
+        '''
+        Test the display method of the Rectangle class.
+        '''
+        r1 = Rectangle(4, 6)
+        expected_output = "####\n####\n####\n####\n####\n####\n"
+        with patch("sys.stdout", new=StringIO()) as buffer:
+            r1.display()
+            self.assertEqual(buffer.getvalue(), expected_output)
+
+        r2 = Rectangle(2, 2)
+        expected_output = "##\n##\n"
+        with patch("sys.stdout", new=StringIO()) as buffer:
+            r2.display()
+            self.assertEqual(buffer.getvalue(), expected_output)
 
 if __name__ == "__main__":
     unittest.main()
