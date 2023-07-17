@@ -186,5 +186,44 @@ class TestRectangle(unittest.TestCase):
         r.update(89, 2, 3, 4, 5)
         self.assertEqual(str(r), "[Rectangle] (89) 4/5 - 2/3")
 
+    def test_update_with_kwargs(self):
+        """Test update method of class Rectangle with kwargs.
+        """
+        r = Rectangle(10, 10, 10, 10)
+
+        r.update(id=89)
+        self.assertEqual(str(r), "[Rectangle] (89) 10/10 - 10/10")
+
+        r.update(width=2)
+        self.assertEqual(str(r), "[Rectangle] (89) 10/10 - 2/10")
+
+        r.update(height=3)
+        self.assertEqual(str(r), "[Rectangle] (89) 10/10 - 2/3")
+
+        r.update(x=4)
+        self.assertEqual(str(r), "[Rectangle] (89) 4/10 - 2/3")
+
+        r.update(y=5)
+        self.assertEqual(str(r), "[Rectangle] (89) 4/5 - 2/3")
+
+
+    def test_update_with_args_and_kwargs(self):
+        '''
+        Test the update method of Rectangle class using kwargs.
+        '''
+        r = Rectangle(10, 10, 10, 10)
+
+        r.update(89, width=2)
+        self.assertEqual(str(r), "[Rectangle] (89) 10/10 - 2/10")
+
+        r.update(89, 2, height=3)
+        self.assertEqual(str(r), "[Rectangle] (89) 10/10 - 2/3")
+
+        r.update(89, 2, 3, x=4)
+        self.assertEqual(str(r), "[Rectangle] (89) 4/10 - 2/3")
+
+        r.update(89, 2, 3, 4, y=5)
+        self.assertEqual(str(r), "[Rectangle] (89) 4/5 - 2/3")
+
 if __name__ == "__main__":
     unittest.main()
