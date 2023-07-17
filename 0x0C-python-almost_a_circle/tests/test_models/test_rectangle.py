@@ -124,7 +124,7 @@ class TestRectangle(unittest.TestCase):
         r2 = Rectangle(2, 10)
         self.assertEqual(r2.area(), 20)
 
-        r3 = Rectangle(8, 7, 0 , 0, 12 )
+        r3 = Rectangle(8, 7, 0, 0, 12)
         self.assertEqual(r3.area(), 56)
 
     def test_display(self):
@@ -142,6 +142,17 @@ class TestRectangle(unittest.TestCase):
         with patch("sys.stdout", new=StringIO()) as buffer:
             r2.display()
             self.assertEqual(buffer.getvalue(), expected_output)
+
+    def test_str(self):
+        '''
+        Test the __str__ method of the Rectangle class.
+        '''
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        self.assertEqual(str(r1), "[Rectangle] (12) 2/1 - 4/6")
+
+        r2 = Rectangle(5, 5, 1)
+        self.assertEqual(str(r2), "[Rectangle] (1) 1/0 - 5/5")
+
 
 if __name__ == "__main__":
     unittest.main()
