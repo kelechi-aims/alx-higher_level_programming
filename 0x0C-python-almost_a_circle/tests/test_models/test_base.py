@@ -4,6 +4,7 @@
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
+import os
 
 
 class TestBase(unittest.TestCase):
@@ -65,6 +66,66 @@ class TestBase(unittest.TestCase):
         """Test to_json_string method with an empty dictionary."""
         json_string = Base.to_json_string([{}])
         self.assertEqual(json_string, '[{}]')
+    
+    def setUp(self):
+        """Set up method to run before each test."""
+        # Remove any existing Rectangle.json file before each test
+        if os.path.exists("Rectangle.json"):
+            os.remove("Rectangle.json")
+
+    def tearDown(self):
+        """Tear down method to run after each test."""
+        # Remove the created Rectangle.json file after each test
+        if os.path.exists("Rectangle.json"):
+            os.remove("Rectangle.json")
+
+    def test_save_to_file_none(self):
+        """Test save_to_file method with None as input."""
+        Rectangle.save_to_file(None)
+        self.assertTrue(os.path.exists("Rectangle.json"))
+        with open("Rectangle.json", "r") as file:
+            content = file.read()
+            self.assertEqual(content, "[]")
+
+    def test_save_to_file_empty(self):
+        """Test save_to_file method with an empty list."""
+        Rectangle.save_to_file([])
+        self.assertTrue(os.path.exists("Rectangle.json"))
+        with open("Rectangle.json", "r") as file:
+            content = file.read()
+            self.assertEqual(content, "[]")
+
+    def test_save_to_file_single_instance(self):
+        """Test save_to_file method with a single instance."""
+        r1 = Rectangle(10, 7, 2, 8)
+        Rectangle.save_to_file([r1])
+        self.assertTrue(os.path.exists("Rectangle.json"))
+        with open("Rectangle.json", "r") as file:
+            content = file.read()
+            self.assertIn('"id": 1', content)
+            self.assertIn('"width": 10', content)
+            self.assertIn('"height": 7', content)
+            self.assertIn('"x": 2', content)
+            self.assertIn('"y": 8', content)
+
+    def test_save_to_file_multiple_instances(self):
+        """Test save_to_file method with multiple instances."""
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        Rectangle.save_to_file([r1, r2])
+        self.assertTrue(os.path.exists("Rectangle.json"))
+        with open("Rectangle.json", "r") as file:
+            content = file.read()
+            self.assertIn('"id": 1', content)
+            self.assertIn('"width": 10', content)
+            self.assertIn('"height": 7', content)
+            self.assertIn('"x": 2', content)
+            self.assertIn('"y": 8', content)
+            self.assertIn('"id": 2', content)
+            self.assertIn('"width": 2', content)
+            self.assertIn('"height": 4', content)
+            self.assertIn('"x": 0', content)
+            self.assertIn('"y": 0', content)
         
 
 if __name__ == "__main__":
