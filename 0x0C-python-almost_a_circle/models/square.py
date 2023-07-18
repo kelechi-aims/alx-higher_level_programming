@@ -73,14 +73,15 @@ class Square(Rectangle):
             3rd argument: the x-coordinate of the square's position
             4th argument: the y-coordinate of the square's position
         '''
-        if args:
+        if args and len(args) > 0:
             attributes = ["id", "size", "x", "y"]
-            for i, arg in enumerate(args):
+            for i in range(len(args)):
                 if i < len(attributes):
-                    setattr(self, attributes[i], arg)
-        else:
+                    setattr(self, attributes[i], args[i])
+        elif kwargs and len(kwargs) > 0:
             for key, value in kwargs.items():
-                setattr(self, key, value)
+                if hasattr(self, key):
+                    setattr(self, key, value)
 
     def to_dictionary(self):
         '''
