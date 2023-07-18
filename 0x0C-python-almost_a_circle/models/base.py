@@ -181,7 +181,7 @@ class Base:
             list_rectangles (list): List of Rectangle instances.
             list_squares (list): List of Square instances.
         '''
-        turtle.Screen().bgcolor("white")
+        turtle.Screen().bgcolor("green")
         turtle.speed(0)
 
         for rectangle in list_rectangles:
