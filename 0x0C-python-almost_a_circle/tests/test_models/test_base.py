@@ -127,6 +127,22 @@ class TestBase(unittest.TestCase):
             self.assertIn('"x": 0', content)
             self.assertIn('"y": 0', content)
         
+    def test_from_json_string_none(self):
+        """Test from_json_string method with None as input."""
+        result = Base.from_json_string(None)
+        self.assertEqual(result, [])
+
+    def test_from_json_string_empty(self):
+        """Test from_json_string method with an empty string as input."""
+        result = Base.from_json_string("")
+        self.assertEqual(result, [])
+
+    def test_from_json_string_valid(self):
+        """Test from_json_string method with valid JSON string."""
+        json_str = '[{"id": 89, "width": 10, "height": 4}, {"id": 7, "width": 1, "height": 7}]'
+        expected_result = [{'id': 89, 'width': 10, 'height': 4}, {'id': 7, 'width': 1, 'height': 7}]
+        result = Base.from_json_string(json_str)
+        self.assertEqual(result, expected_result)
 
 if __name__ == "__main__":
     unittest.main()
