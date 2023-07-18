@@ -1,4 +1,4 @@
-#!/usr/bin/pythona
+#!/usr/bin/python3
 '''This module has class Square
 '''
 from models.rectangle import Rectangle
