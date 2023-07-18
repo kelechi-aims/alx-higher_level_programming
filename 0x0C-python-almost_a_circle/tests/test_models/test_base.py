@@ -4,6 +4,7 @@
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
+from models.square import Square
 import os
 
 
@@ -143,6 +144,27 @@ class TestBase(unittest.TestCase):
         expected_result = [{'id': 89, 'width': 10, 'height': 4}, {'id': 7, 'width': 1, 'height': 7}]
         result = Base.from_json_string(json_str)
         self.assertEqual(result, expected_result)
+
+    def test_create_rectangle(self):
+        """Test create method with a Rectangle instance."""
+        rectangle_dict = {'id': 1, 'width': 3, 'height': 5, 'x': 1, 'y': 0}
+        r1 = Rectangle.create(**rectangle_dict)
+        self.assertIsInstance(r1, Rectangle)
+        self.assertEqual(r1.id, 1)
+        self.assertEqual(r1.width, 3)
+        self.assertEqual(r1.height, 5)
+        self.assertEqual(r1.x, 1)
+        self.assertEqual(r1.y, 0)
+
+    def test_create_square(self):
+        """Test create method with a Square instance."""
+        square_dict = {'id': 2, 'size': 3, 'x': 1, 'y': 0}
+        s1 = Square.create(**square_dict)
+        self.assertIsInstance(s1, Square)
+        self.assertEqual(s1.id, 2)
+        self.assertEqual(s1.size, 3)
+        self.assertEqual(s1.x, 1)
+        self.assertEqual(s1.y, 0)
 
 if __name__ == "__main__":
     unittest.main()
