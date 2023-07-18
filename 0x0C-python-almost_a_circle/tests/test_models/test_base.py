@@ -6,6 +6,8 @@ from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 import os
+from unittest.mock import patch
+from io import StringIO
 
 
 class TestBase(unittest.TestCase):
@@ -256,6 +258,21 @@ class TestBase(unittest.TestCase):
 
         for square in list_squares_input:
             self.assertIn(square, list_squares_output)
+
+    @patch("turtle.Screen")
+    @patch("turtle.Turtle")
+    def test_draw(self, mock_turtle, mock_screen):
+        """Test draw method of Base class."""
+        list_rectangles = [Rectangle(100, 40), Rectangle(90, 110, 30, 10), Rectangle(20, 25, 110, 80)]
+        list_squares = [Square(35), Square(15, 70, 50), Square(80, 30, 70)]
+
+        with patch("sys.stdout", new=StringIO()) as output:
+            Base.draw(list_rectangles, list_squares)
+
+        mock_turtle.assert_called()
+        mock_screen.assert_called()
+
+        self.assertEqual(output.getvalue(), "....\n")
 
 if __name__ == "__main__":
     unittest.main()
