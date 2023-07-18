@@ -190,5 +190,72 @@ class TestBase(unittest.TestCase):
         for square in list_squares_input:
             self.assertIn(square, list_squares_output)
 
+    @classmethod
+    def setUpClass(cls):
+        """Set up test class."""
+        # Remove any existing CSV files from previous test runs
+        if os.path.exists("Rectangle.csv"):
+            os.remove("Rectangle.csv")
+        if os.path.exists("Square.csv"):
+            os.remove("Square.csv")
+
+    def test_save_to_file_csv(self):
+        """Test save_to_file_csv method of Base class."""
+        # Test with Rectangle instances
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+
+        Rectangle.save_to_file_csv(list_rectangles_input)
+
+        with open("Rectangle.csv", "r") as file:
+            csv_lines = file.readlines()
+            csv_lines = [line.strip() for line in csv_lines]
+
+        # Check the content of the CSV file
+        expected_csv = ["1,10,7,2,8", "2,2,4,0,0"]
+        self.assertEqual(csv_lines, expected_csv)
+
+        # Test with Square instances
+        s1 = Square(5)
+        s2 = Square(7, 9, 1)
+        list_squares_input = [s1, s2]
+
+        Square.save_to_file_csv(list_squares_input)
+
+        with open("Square.csv", "r") as file:
+            csv_lines = file.readlines()
+            csv_lines = [line.strip() for line in csv_lines]
+
+        # Check the content of the CSV file
+        expected_csv = ["5,5,0,0", "6,7,9,1"]
+        self.assertEqual(csv_lines, expected_csv)
+
+    def test_load_from_file_csv(self):
+        """Test load_from_file_csv method of Base class."""
+        # Test with Rectangle instances
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+
+        Rectangle.save_to_file_csv(list_rectangles_input)
+
+        list_rectangles_output = Rectangle.load_from_file_csv()
+
+        for rect in list_rectangles_input:
+            self.assertIn(rect, list_rectangles_output)
+
+        # Test with Square instances
+        s1 = Square(5)
+        s2 = Square(7, 9, 1)
+        list_squares_input = [s1, s2]
+
+        Square.save_to_file_csv(list_squares_input)
+
+        list_squares_output = Square.load_from_file_csv()
+
+        for square in list_squares_input:
+            self.assertIn(square, list_squares_output)
+
 if __name__ == "__main__":
     unittest.main()
