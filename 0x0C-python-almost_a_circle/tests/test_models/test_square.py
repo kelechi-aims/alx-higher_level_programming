@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-'''This module has the test suite for Square class
-'''
+'''This module has the test suite for Square class.'''
 import unittest
 from models.square import Square
 from io import StringIO
