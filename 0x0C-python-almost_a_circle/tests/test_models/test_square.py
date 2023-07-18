@@ -122,6 +122,18 @@ class TestSquare(unittest.TestCase):
         expected_dict = {'id': 10, 'size': 5, 'x': 2, 'y': 3}
         self.assertEqual(s_dict, expected_dict)
 
+    def test_size_getter_setter(self):
+        """Test the size getter and setter of the Square class."""
+        s = Square(5)
+        self.assertEqual(s.size, 5)
+
+        s.size = 10
+        self.assertEqual(s.size, 10)
+        self.assertEqual(s.width, 10)
+        self.assertEqual(s.height, 10)
+
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            s.size = "9"
 
 if __name__ == "__main__":
     unittest.main()
