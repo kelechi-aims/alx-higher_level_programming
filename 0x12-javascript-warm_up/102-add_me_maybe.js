@@ -1,4 +1,4 @@
-#!/usr/bin/noje
+#!/usr/bin/node
 /*
  A function that increments and calls a function.
 */
