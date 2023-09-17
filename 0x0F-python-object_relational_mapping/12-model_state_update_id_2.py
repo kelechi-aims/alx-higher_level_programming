@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 '''
-A script that adds the State object “Louisiana” to the database hbtn_0e_6_usa
+A script that changes the name of a State object
+from the database hbtn_0e_6_usa
 You must use the module SQLAlchemy
 '''
 from sys import argv
@@ -15,9 +16,9 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    new_state = State(name='Louisiana')
-    session.add(new_state)
-    session.commit()
-    print(new_state.id)
+    updating_state = session.query(State).filter_by(id=2).first()
+    if updating_state:
+        updating_state.name = 'New Mexico'
+        session.commit()
 
     session.close()
