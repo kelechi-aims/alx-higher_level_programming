@@ -12,8 +12,7 @@ url = sys.argv[1]
 email = sys.argv[2]
 
 data = parse.urlencode({'email': email}).encode('ascii')
-if __name__ == "__main__":
-    with request.urlopen(url, data=data) as response:
-        body_bytes = response.read()
-        body_string = body_bytes.decode('utf-8')
-        print(body_string)
+with request.urlopen(url, data=data) as response:
+    body_bytes = response.read()
+    body_string = body_bytes.decode('utf-8')
+    print(body_string)
