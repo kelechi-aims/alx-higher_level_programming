@@ -7,8 +7,8 @@ from urllib import request, error
 import sys
 from urllib.error import HTTPError
 
-url = sys.argv[1]
 if __name__ == '__main__':
+    url = sys.argv[1]
     try:
         with request.urlopen(url) as response:
             body_bytes = response.read()
