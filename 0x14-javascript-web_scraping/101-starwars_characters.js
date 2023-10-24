@@ -20,7 +20,7 @@ function printMovieData (characters, index) {
       const characterData = JSON.parse(charBody);
       console.log(characterData.name);
       if (index + 1 < characters.length) {
-        printCharacters(characters, index + 1);
+        printMovieData(characters, index + 1);
       }
     }
   });
